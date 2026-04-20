@@ -16,7 +16,7 @@ const PreviousReports = ({ currentData }) => {
 
       <div className="space-y-6">
         {/* Current (Live) Summary */}
-        <div className="glass-card p-8 border-l-4 border-primary">
+        <div className="glass-card border-l-4 border-primary">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-xl primary-gradient flex items-center justify-center text-white">
@@ -46,7 +46,7 @@ const PreviousReports = ({ currentData }) => {
             Historical Archive
           </h3>
           {DUMMY_REPORTS.map((report) => (
-            <div key={report.id} className="glass-card p-6 flex flex-col md:flex-row md:items-center justify-between group cursor-pointer hover:border-white/20 transition-all gap-4">
+            <div key={report.id} className="glass-card flex flex-col md:flex-row md:items-center justify-between group cursor-pointer hover:border-white/20 transition-all gap-4">
                <div className="flex flex-col md:flex-row md:items-center gap-6">
                   <div className="w-32 flex-shrink-0">
                     <div className="text-lg font-bold">{report.date}</div>

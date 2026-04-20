@@ -26,7 +26,7 @@ const DepartmentView = ({ data }) => {
         {departmentData.map((dept) => {
           const details = getQuadrantDetails(dept.quadrant);
           return (
-            <div key={dept.name} className="glass-card p-6 flex flex-col h-full hover:translate-y-[-4px] transition-transform">
+            <div key={dept.name} className="glass-card flex flex-col h-full hover:translate-y-[-4px] transition-transform">
               <div className="flex items-start justify-between mb-6 gap-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">

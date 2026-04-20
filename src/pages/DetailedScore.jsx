@@ -36,7 +36,7 @@ const DetailedScore = ({ data }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         {/* Quadrant Matrix */}
-        <div className="lg:col-span-2 glass-card p-8">
+        <div className="lg:col-span-2 glass-card">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-xl font-semibold">Leadership Matrix (Organization Position)</h2>
             <div className="flex gap-4 text-[10px] font-bold uppercase tracking-wider text-text-secondary">
@@ -47,22 +47,37 @@ const DetailedScore = ({ data }) => {
             </div>
           </div>
           
-          <div className="relative border border-white/5 rounded-2xl overflow-hidden bg-slate-900/30" style={{ height: '450px' }}>
-            <div className="absolute text-center pointer-events-none z-10" style={{ top: '2rem', right: '4rem' }}>
-              <div className="text-xl font-bold text-[#10b981] opacity-60 uppercase tracking-widest">Q1: THAL Leader</div>
-              <div className="text-[10px] text-text-secondary">Balanced & Future-Ready</div>
+          <div className="relative border border-white/5 rounded-2xl overflow-hidden bg-slate-900/30 quadrant-matrix">
+            <div className="quadrant-label top right">
+              <div className="text-[10px] md:text-xl font-bold text-[#10b981] opacity-60 uppercase tracking-widest">
+                <span className="md:hidden">Q1: Leader</span>
+                <span className="hidden md:inline">Q1: THAL Leader</span>
+              </div>
+              <div className="hidden md:block text-xs text-text-secondary">Balanced & Future-Ready</div>
             </div>
-            <div className="absolute text-center pointer-events-none z-10" style={{ top: '2rem', left: '4rem' }}>
-              <div className="text-xl font-bold text-[#3b82f6] opacity-60 uppercase tracking-widest">Q2: People-Centric</div>
-              <div className="text-[10px] text-text-secondary">Strong Leadership, Weak Tech</div>
+
+            <div className="quadrant-label top left">
+              <div className="text-[10px] md:text-xl font-bold text-[#3b82f6] opacity-60 uppercase tracking-widest">
+                <span className="md:hidden">Q2: People</span>
+                <span className="hidden md:inline">Q2: People-Centric</span>
+              </div>
+              <div className="hidden md:block text-xs text-text-secondary">Strong Leadership, Weak Tech</div>
             </div>
-            <div className="absolute text-center pointer-events-none z-10" style={{ bottom: '4rem', right: '4rem' }}>
-              <div className="text-xl font-bold text-[#f59e0b] opacity-60 uppercase tracking-widest">Q4: Tech-Driven</div>
-              <div className="text-[10px] text-text-secondary">Strong Tech, Weak People</div>
+
+            <div className="quadrant-label bottom right">
+              <div className="text-[10px] md:text-xl font-bold text-[#f59e0b] opacity-60 uppercase tracking-widest">
+                <span className="md:hidden">Q4: Tech</span>
+                <span className="hidden md:inline">Q4: Tech-Driven</span>
+              </div>
+              <div className="hidden md:block text-xs text-text-secondary">Strong Tech, Weak People</div>
             </div>
-            <div className="absolute text-center pointer-events-none z-10" style={{ bottom: '4rem', left: '4rem' }}>
-              <div className="text-xl font-bold text-[#ef4444] opacity-60 uppercase tracking-widest">Q3: Fragmented</div>
-              <div className="text-[10px] text-text-secondary">Low Both</div>
+
+            <div className="quadrant-label bottom left">
+              <div className="text-[10px] md:text-xl font-bold text-[#ef4444] opacity-60 uppercase tracking-widest">
+                <span className="md:hidden">Q3: Frag</span>
+                <span className="hidden md:inline">Q3: Fragmented</span>
+              </div>
+              <div className="hidden md:block text-xs text-text-secondary">Low Both</div>
             </div>
 
             <ResponsiveContainer width="100%" height="100%">
@@ -72,14 +87,14 @@ const DetailedScore = ({ data }) => {
                   type="number" 
                   dataKey="x" 
                   domain={[0, 100]} 
-                  stroke="#64748b"
+                  tick={{ fontSize: 10 }}
                   label={{ value: 'Technology Maturity (T+A)', position: 'bottom', offset: 20, fill: '#64748b', fontSize: 12 }}
                 />
                 <YAxis 
                   type="number" 
                   dataKey="y" 
                   domain={[0, 100]} 
-                  stroke="#64748b"
+                  tick={{ fontSize: 10 }}
                   label={{ value: 'Workforce Maturity (H+L)', angle: -90, position: 'insideLeft', offset: -10, fill: '#64748b', fontSize: 12 }}
                 />
                 <ZAxis type="number" range={[400, 400]} />
@@ -99,7 +114,7 @@ const DetailedScore = ({ data }) => {
                 />
                 <Scatter name="Organization" data={scatterData} fill={quadrant.color}>
                   <Cell fill={quadrant.color} />
-                  <LabelList dataKey="name" position="top" style={{ fill: '#fff', fontSize: '14px', fontWeight: 'bold' }} />
+                  <LabelList dataKey="name" position="top" style={{ fill: '#fff', fontSize: '13px', fontWeight: 'bold' }} />
                 </Scatter>
               </ScatterChart>
             </ResponsiveContainer>
@@ -129,7 +144,7 @@ const DetailedScore = ({ data }) => {
 
       {/* Recommendations & Insights */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="glass-card p-8 border-l-4" style={{ borderColor: quadrant.color }}>
+        <div className="glass-card border-l-4" style={{ borderColor: quadrant.color }}>
           <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
             <Info className="text-primary" />
             Recommendations for {stats.quadrant}
@@ -146,7 +161,7 @@ const DetailedScore = ({ data }) => {
           </div>
         </div>
 
-        <div className="glass-card p-8">
+        <div className="glass-card">
            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
             <AlertTriangle className="text-amber-500" />
             Section Analysis

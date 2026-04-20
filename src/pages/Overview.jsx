@@ -30,7 +30,7 @@ const Overview = ({ data }) => {
         <p className="text-text-secondary">Summary of organizational THAL maturity and participation.</p>
       </header>
 
-      <div className="glass-card p-8 mb-8 flex flex-col xl:flex-row gap-8">
+      <div className="glass-card mb-8 flex flex-col xl:flex-row gap-8">
         {/* Left Side: Overall Score & Quadrant */}
         <div className="flex flex-col md:flex-row items-center gap-8 xl:w-2/5 xl:border-r border-glass-border xl:pr-8">
           <div className="relative w-48 h-48 flex items-center justify-center rounded-full flex-shrink-0" style={{ background: quadrant.bg }}>
@@ -65,7 +65,7 @@ const Overview = ({ data }) => {
         </div>
 
         {/* Right Side: Unified Key Metrics Grid */}
-        <div className="xl:w-3/5 grid grid-cols-2 md:grid-cols-3 gap-6 items-center">
+        <div className="xl:w-3/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-center">
            {/* Metric: Attendees */}
            <div className="flex flex-col">
              <div className="flex items-center gap-2 text-text-secondary mb-1">
@@ -119,7 +119,7 @@ const Overview = ({ data }) => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Participation Pie Chart */}
-        <div className="glass-card p-8">
+        <div className="glass-card">
           <h3 className="text-xl font-semibold mb-6 text-center">Attendee Distribution</h3>
           <div className="w-full flex justify-center items-center" style={{ height: '300px' }}>
             <ResponsiveContainer width="100%" height="100%">
@@ -148,7 +148,7 @@ const Overview = ({ data }) => {
         </div>
 
         {/* THAL Scores By Dept */}
-        <div className="glass-card p-8">
+        <div className="glass-card">
            <h3 className="text-xl font-semibold mb-6">Available Department Scores</h3>
            <div className="space-y-4">
              {Array.from(new Set(data.map(d => d.department))).map((dept, i) => {
