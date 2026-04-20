@@ -4,7 +4,7 @@ import {
   CartesianGrid, Tooltip, ResponsiveContainer, 
   ReferenceLine, ReferenceArea, LabelList, Cell
 } from 'recharts';
-import { Zap, Users, Activity, Award, Info, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Zap, Users, Activity, Award, Info, AlertTriangle, CheckCircle, Search, TrendingUp } from 'lucide-react';
 import { aggregateScores, getQuadrantDetails } from '../utils/calculations';
 
 const DetailedScore = ({ data }) => {
@@ -147,26 +147,77 @@ const DetailedScore = ({ data }) => {
         <div className="glass-card border-l-4" style={{ borderColor: quadrant.color }}>
           <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
             <Info className="text-primary" />
-            Recommendations for {stats.quadrant}
+            Strategic Analysis: {stats.quadrant}
           </h3>
-          <div className="space-y-4 text-text-secondary leading-relaxed">
-            <p>{quadrant.desc}</p>
-            <div className="p-4 bg-glass-bg rounded-xl border border-glass-border mt-4">
-              <h4 className="font-bold text-text-primary mb-2 flex items-center gap-2">
-                <CheckCircle size={16} className="text-emerald-500" />
-                Actionable Advice
+          
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-[10px] uppercase font-bold text-text-secondary tracking-widest mb-2 flex items-center gap-2">
+                <Search size={14} /> Current Situation
               </h4>
-              <p className="text-sm">{quadrant.recommendation}</p>
+              <p className="text-text-primary leading-relaxed text-sm">{quadrant.situation}</p>
+            </div>
+
+            <div>
+              <h4 className="text-[10px] uppercase font-bold text-text-secondary tracking-widest mb-2 flex items-center gap-2">
+                <TrendingUp size={14} /> Improvement Focus
+              </h4>
+              <p className="text-text-primary leading-relaxed text-sm">{quadrant.focus}</p>
+            </div>
+
+            <div>
+              <h4 className="text-[10px] uppercase font-bold text-text-secondary tracking-widest mb-2 flex items-center gap-2">
+                <AlertTriangle size={14} className="text-amber-500" /> Risks to Watch
+              </h4>
+              <p className="text-text-primary leading-relaxed text-sm">{quadrant.risk}</p>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-glass-border">
+            <div className="p-4 bg-primary/10 rounded-xl border border-primary/20">
+              <p className="italic text-primary font-medium text-center text-sm">
+                "{quadrant.oneLiner}"
+              </p>
             </div>
           </div>
         </div>
 
+        <div className="glass-card border-l-4" style={{ borderColor: quadrant.color }}>
+          <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
+            <CheckCircle className="text-emerald-500" />
+            Actionable Roadmap
+          </h3>
+          
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-sm font-bold text-text-primary mb-3">Recommendation</h4>
+              <p className="text-text-secondary text-sm leading-relaxed">{quadrant.recommendation}</p>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-bold text-text-primary mb-3">Key Next Steps</h4>
+              <ul className="space-y-3">
+                {quadrant.todo.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm text-text-secondary">
+                    <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 flex-shrink-0 mt-0.5">
+                      {idx + 1}
+                    </div>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1" style={{ marginTop: '48px' }}>
         <div className="glass-card">
            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
             <AlertTriangle className="text-amber-500" />
             Section Analysis
            </h3>
-           <div className="grid grid-cols-2 gap-4">
+           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <SectionIndicator label="Transform" value={stats.transform} icon={<Zap size={14}/>} />
               <SectionIndicator label="Adapt" value={stats.adapt} icon={<Activity size={14}/>} />
               <SectionIndicator label="Humanize" value={stats.humanize} icon={<Users size={14}/>} />

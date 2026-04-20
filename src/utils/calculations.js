@@ -90,39 +90,89 @@ export const getQuadrantDetails = (quadrant) => {
       return {
         color: '#10b981',
         bg: 'rgba(16, 185, 129, 0.1)',
-        desc: 'High scores across all questions. Organization is a market leader.',
-        recommendation: 'Continue innovation and mentor other departments.'
+        desc: 'Q1 – THAL Leader: High AI adoption, employee confidence, and balanced hybrid work. Market leadership in efficiency and innovation.',
+        oneLiner: 'From being efficient to becoming industry leaders.',
+        situation: 'Strong AI adoption, high employee confidence, effective leadership, and balanced hybrid work.',
+        recommendation: 'Sustain & Scale Leadership: Scale AI across more functions, invest in governance/ethics, and build CoEs.',
+        todo: [
+          'Scale AI across more business functions',
+          'Invest in advanced capabilities (AI governance, ethical AI)',
+          'Build innovation labs / CoEs (Centers of Excellence)',
+          'Mentor other teams or business units'
+        ],
+        focus: 'Move from efficiency → innovation leadership (AI-driven decision-making, predictive systems).',
+        risk: 'Complacency and over-optimization without innovation.'
       };
     case 'People-Centric':
       return {
         color: '#3b82f6',
         bg: 'rgba(59, 130, 246, 0.1)',
-        desc: 'Strong Workforce & Leadership, but lagging in Tech & Agility.',
-        recommendation: 'Invest in technology adoption and process automation.'
+        desc: 'Q2 – People-Centric: Strong culture and workforce readiness, but lagging in technology modernization and AI capability.',
+        oneLiner: 'You have the people—now empower them with technology.',
+        situation: 'Employees are ready and engaged with strong leadership, but AI adoption is low and legacy systems dominate.',
+        recommendation: 'Accelerate Technology Adoption: Introduce AI in phases (PoC → scale) and modernize legacy digital infrastructure.',
+        todo: [
+          'Introduce AI tools in phases (PoC → scale)',
+          'Modernize legacy systems (API-first approach)',
+          'Invest in digital infrastructure',
+          'Provide hands-on AI training (not just theory)'
+        ],
+        focus: 'Convert human readiness → digital capability.',
+        risk: 'Falling behind competitors and talent frustration due to outdated tools.'
       };
     case 'Tech-Driven':
       return {
         color: '#f59e0b',
         bg: 'rgba(245, 158, 11, 0.1)',
-        desc: 'Strong Tech Maturity, but People & Culture metrics are low.',
-        recommendation: 'Focus on workforce engagement and leadership training.'
+        desc: 'Q4 – Tech-Driven: Advanced tools and systems adoption, but hindered by employee fear, low trust, and poor leadership alignment.',
+        oneLiner: 'Technology alone doesn’t transform—people do.',
+        situation: 'Strong AI/tools adoption and good systems, but plagued by employee fear, low trust, burnout, and misalignment.',
+        recommendation: 'Humanize the Transformation: Launch AI awareness programs and redesign roles for human-AI collaboration.',
+        todo: [
+          'Launch AI awareness & confidence programs',
+          'Redesign roles (clarify human vs AI tasks)',
+          'Introduce outcome-based performance models',
+          'Train leaders in people-centric management'
+        ],
+        focus: 'Shift from technology push → human adoption.',
+        risk: 'Resistance to AI, high attrition, and misuse of tools.'
       };
     case 'Fragmented':
       return {
         color: '#ef4444',
         bg: 'rgba(239, 68, 68, 0.1)',
-        desc: 'Low scores across both Technology and Workforce metrics.',
-        recommendation: 'Urgent need for foundational organizational transformation.'
+        desc: 'Q3 – Fragmented: Foundational weaknesses in both AI adoption and leadership alignment. High resistance to change.',
+        oneLiner: 'Fix the foundation before scaling transformation.',
+        situation: 'Low AI adoption, poor leadership alignment, low employee confidence, and high resistance to change.',
+        recommendation: 'Stabilize First, Then Transform: Focus on leadership alignment, clear vision, and building foundational trust.',
+        todo: [
+          'Start with leadership alignment & define clear vision',
+          'Communicate change strategy & build trust',
+          'Show quick wins (low-risk AI use cases)',
+          'Invest in basic digital literacy & AI training'
+        ],
+        focus: 'Move to Q2 (People-Centric) first by building people capability.',
+        risk: 'Change fatigue, resistance collapse, and transformation failure.'
       };
     case 'Transition Zone':
       return {
         color: '#a855f7',
         bg: 'rgba(168, 85, 247, 0.1)',
-        desc: 'Maturity is developing but not yet fully achieved.',
-        recommendation: 'Standardize successful pilots to move into the Leader quadrant.'
+        desc: 'Transition Zone: Maturity is developing but not yet fully achieved. Standardizing successful pilots is key.',
+        oneLiner: 'Moving toward excellence through consistency.',
+        situation: 'Mixed results with some successful pilots but inconsistent adoption across the organization.',
+        recommendation: 'Formalize and Scale: Standardize processes and expand successful AI initiatives across all departments.',
+        todo: [
+          'Document best practices from successful pilots',
+          'Standardize AI tools and platforms',
+          'Expand training programs',
+          'Align departmental goals with THAL vision'
+        ],
+        focus: 'Achieving consistency to cross into the Leader quadrant.',
+        risk: 'Stalling in transition or losing momentum.'
       };
     default:
-      return { color: '#6b7280', bg: 'rgba(107, 114, 128, 0.1)', desc: '', recommendation: '' };
+      return { color: '#6b7280', bg: 'rgba(107, 114, 128, 0.1)', desc: 'Unknown state.', recommendation: 'No specific advice available.', oneLiner: '', situation: '', todo: [], focus: '', risk: '' };
   }
 };
 
