@@ -50,32 +50,28 @@ const DetailedScore = ({ data }) => {
           <div className="relative border border-white/5 rounded-2xl overflow-hidden bg-slate-900/30 quadrant-matrix">
             <div className="quadrant-label top right">
               <div className="text-[10px] md:text-xl font-bold text-[#10b981] opacity-60 uppercase tracking-widest">
-                <span className="md:hidden">Q1: Leader</span>
-                <span className="hidden md:inline">Q1: THAL Leader</span>
+                Q1: THAL Leader
               </div>
               <div className="hidden md:block text-xs text-text-secondary">Balanced & Future-Ready</div>
             </div>
 
             <div className="quadrant-label top left">
               <div className="text-[10px] md:text-xl font-bold text-[#3b82f6] opacity-60 uppercase tracking-widest">
-                <span className="md:hidden">Q2: People</span>
-                <span className="hidden md:inline">Q2: People-Centric</span>
+                Q2: People-Centric
               </div>
               <div className="hidden md:block text-xs text-text-secondary">Strong Leadership, Weak Tech</div>
             </div>
 
             <div className="quadrant-label bottom right">
               <div className="text-[10px] md:text-xl font-bold text-[#f59e0b] opacity-60 uppercase tracking-widest">
-                <span className="md:hidden">Q4: Tech</span>
-                <span className="hidden md:inline">Q4: Tech-Driven</span>
+                Q4: Tech-Driven
               </div>
               <div className="hidden md:block text-xs text-text-secondary">Strong Tech, Weak People</div>
             </div>
 
             <div className="quadrant-label bottom left">
               <div className="text-[10px] md:text-xl font-bold text-[#ef4444] opacity-60 uppercase tracking-widest">
-                <span className="md:hidden">Q3: Frag</span>
-                <span className="hidden md:inline">Q3: Fragmented</span>
+                Q3: Fragmented
               </div>
               <div className="hidden md:block text-xs text-text-secondary">Low Both</div>
             </div>

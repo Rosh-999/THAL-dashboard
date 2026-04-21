@@ -411,3 +411,19 @@ td {
 .recharts-cartesian-grid-vertical line {
   stroke: rgba(255, 255, 255, 0.05);
 }
+
+/* Responsive Utilities */
+.hidden { display: none !important; }
+
+@media (min-width: 768px) {
+  .md\:hidden { display: none !important; }
+  .md\:inline { display: inline !important; }
+  .md\:block { display: block !important; }
+  .md\:flex { display: flex !important; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:hidden { display: none !important; }
+  .lg\:block { display: block !important; }
+  .lg\:flex { display: flex !important; }
+}
