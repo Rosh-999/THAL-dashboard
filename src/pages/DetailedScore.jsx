@@ -246,8 +246,14 @@ const BreakdownCard = ({ title, value, icon, color, sub1, sub2 }) => (
         <div className="font-mono text-sm font-bold">{Math.round(sub2.val)}%</div>
       </div>
     </div>
-    {/* Background accent - Darkened */}
-    <div className="absolute top-0 right-0 w-32 h-32 opacity-20 pointer-events-none translate-x-10 -translate-y-10 rounded-full" style={{ background: color, filter: 'brightness(0.8)' }}></div>
+    {/* Background accent - Refined for mobile */}
+    <div 
+      className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 opacity-[0.08] pointer-events-none translate-x-1/2 -translate-y-1/2 rounded-full" 
+      style={{ 
+        background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
+        filter: 'blur(30px)' 
+      }}
+    ></div>
   </div>
 );
 

@@ -151,25 +151,25 @@ const Overview = ({ data }) => {
         <div className="glass-card">
            <h3 className="text-xl font-semibold mb-6">Available Department Scores</h3>
            <div className="space-y-4">
-             {Array.from(new Set(data.map(d => d.department))).map((dept, i) => {
-               const deptData = data.filter(d => d.department === dept);
-               const scores = aggregateScores(deptData);
-               const avg = Math.round((scores.techScore + scores.workforceScore) / 2);
-               return (
-                 <div key={dept} className="flex items-center justify-between p-4 bg-glass-bg rounded-xl border border-glass-border">
-                   <div className="font-medium">{dept}</div>
-                   <div className="flex items-center gap-3">
-                     <div className="w-32 h-2 bg-white/5 rounded-full overflow-hidden flex">
-                       <div 
-                         className="h-full rounded-full" 
-                         style={{ width: `${avg}%`, background: getQuadrantDetails(scores.quadrant).color }}
-                       ></div>
-                     </div>
-                     <span className="font-mono font-bold w-10 text-right">{avg}%</span>
-                   </div>
-                 </div>
-               );
-             })}
+              {Array.from(new Set(data.map(d => d.department))).map((dept, i) => {
+                const deptData = data.filter(d => d.department === dept);
+                const scores = aggregateScores(deptData);
+                const avg = Math.round((scores.techScore + scores.workforceScore) / 2);
+                return (
+                  <div key={dept} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-glass-bg rounded-xl border border-glass-border gap-3">
+                    <div className="font-semibold text-sm truncate max-w-[200px]">{dept}</div>
+                    <div className="flex items-center gap-3 flex-1 sm:justify-end">
+                      <div className="flex-1 sm:flex-none sm:w-32 h-2 bg-black/5 rounded-full overflow-hidden flex">
+                        <div 
+                          className="h-full rounded-full" 
+                          style={{ width: `${avg}%`, background: getQuadrantDetails(scores.quadrant).color }}
+                        ></div>
+                      </div>
+                      <span className="font-mono font-bold w-10 text-right text-sm">{avg}%</span>
+                    </div>
+                  </div>
+                );
+              })}
            </div>
         </div>
       </div>
