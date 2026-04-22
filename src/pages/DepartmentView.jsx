@@ -51,25 +51,26 @@ const DepartmentView = ({ data }) => {
               width: '90%', 
               padding: '0', 
               overflow: 'hidden',
-              backgroundColor: '#0f172a',
-              border: '1px solid rgba(255,255,255,0.1)',
+              backgroundColor: '#fcf8f1',
+              border: '1px solid rgba(0,0,0,0.1)',
               position: 'relative',
               transformOrigin: modalOrigin ? `${modalOrigin.x}px ${modalOrigin.y}px` : 'center',
-              animation: 'popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
+              animation: 'popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+              color: '#020617'
             }}
             onClick={e => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="p-6 border-b border-white/10 flex justify-between items-center bg-slate-900">
+            <div className="p-6 border-b border-black/5 flex justify-between items-center" style={{ backgroundColor: getQuadrantDetails(selectedDept.quadrant).bg }}>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl primary-gradient flex items-center justify-center text-white">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg" style={{ background: getQuadrantDetails(selectedDept.quadrant).color }}>
                   <Briefcase size={24} />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold">{selectedDept.name.toUpperCase()} ANALYSIS</h2>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: getQuadrantDetails(selectedDept.quadrant).color }}></span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-text-secondary">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600">
                       {selectedDept.quadrant} • {selectedDept.attendees} Respondents
                     </span>
                   </div>
@@ -80,7 +81,7 @@ const DepartmentView = ({ data }) => {
                   setSelectedDept(null);
                   setModalOrigin(null);
                 }}
-                className="p-2 hover:bg-white/10 rounded-lg text-text-secondary"
+                className="p-2 hover:bg-black/5 rounded-lg text-slate-500"
               >
                 <X size={20} />
               </button>
@@ -90,41 +91,44 @@ const DepartmentView = ({ data }) => {
             <div className="p-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-6">
-                  <div>
-                    <h4 className="text-[10px] uppercase font-bold text-text-secondary mb-2 flex items-center gap-2">
-                      <Search size={12} /> Situation
+                  <div className="p-4 rounded-2xl border border-black/5 shadow-sm" style={{ backgroundColor: 'rgba(59, 130, 246, 0.05)' }}>
+                    <h4 className="text-[10px] uppercase font-bold text-blue-600 mb-3 flex items-center gap-2">
+                      <Search size={14} /> Current Situation
                     </h4>
-                    <p className="text-sm text-text-primary leading-relaxed bg-white/5 p-3 rounded-lg">
+                    <p className="text-sm text-slate-800 leading-relaxed italic">
                       {getQuadrantDetails(selectedDept.quadrant).situation}
                     </p>
                   </div>
-                  <div>
-                    <h4 className="text-[10px] uppercase font-bold text-text-secondary mb-2 flex items-center gap-2">
-                      <TrendingUp size={12} /> Focus
+                  <div className="p-4 rounded-2xl border border-black/5 shadow-sm" style={{ backgroundColor: 'rgba(168, 85, 247, 0.05)' }}>
+                    <h4 className="text-[10px] uppercase font-bold text-purple-600 mb-3 flex items-center gap-2">
+                      <TrendingUp size={14} /> Improvement Focus
                     </h4>
-                    <p className="text-sm text-text-primary leading-relaxed bg-white/5 p-3 rounded-lg">
+                    <p className="text-sm text-slate-800 leading-relaxed font-medium">
                       {getQuadrantDetails(selectedDept.quadrant).focus}
                     </p>
                   </div>
                 </div>
 
                 <div className="space-y-6">
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-                    <h4 className="text-xs font-bold mb-3">Scores</h4>
-                    <MetricBar label="Tech" value={selectedDept.techScore} color="#6366f1" />
-                    <div className="h-4"></div>
-                    <MetricBar label="Workforce" value={selectedDept.workforceScore} color="#ec4899" />
+                  <div className="p-4 rounded-2xl bg-white border border-black/5 shadow-sm">
+                    <h4 className="text-[10px] uppercase font-bold text-slate-500 mb-4 tracking-widest">Metric Performance</h4>
+                    <div className="space-y-4">
+                      <MetricBar label="Tech Maturity" value={selectedDept.techScore} color="#6366f1" />
+                      <MetricBar label="Workforce Readiness" value={selectedDept.workforceScore} color="#ec4899" />
+                    </div>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
-                    <h4 className="text-xs font-bold mb-3 flex items-center gap-2 text-emerald-500">
-                      <CheckCircle size={14} /> Roadmap
+                  <div className="p-5 rounded-2xl border border-emerald-500/10 shadow-sm" style={{ backgroundColor: 'rgba(16, 185, 129, 0.05)' }}>
+                    <h4 className="text-[10px] uppercase font-bold mb-4 flex items-center gap-2 text-emerald-700 tracking-widest">
+                      <CheckCircle size={16} /> Actionable Roadmap
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {getQuadrantDetails(selectedDept.quadrant).todo.map((item, idx) => (
-                        <li key={idx} className="text-xs text-text-secondary flex gap-2">
-                          <span className="text-emerald-500 font-bold">{idx + 1}.</span>
-                          {item}
+                        <li key={idx} className="text-xs text-slate-700 flex gap-3">
+                          <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[10px] font-bold text-emerald-600 border border-emerald-100 flex-shrink-0">
+                            {idx + 1}
+                          </div>
+                          <span className="leading-tight">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -133,8 +137,8 @@ const DepartmentView = ({ data }) => {
               </div>
             </div>
             
-            <div className="p-4 bg-slate-900/50 border-t border-white/5 text-center">
-               <p className="italic text-primary text-sm font-medium">
+            <div className="p-5 border-t border-black/5 text-center" style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(252, 248, 241, 1))' }}>
+               <p className="italic text-slate-600 text-sm font-semibold max-w-md mx-auto">
                  "{getQuadrantDetails(selectedDept.quadrant).oneLiner}"
                </p>
             </div>

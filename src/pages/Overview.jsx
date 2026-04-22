@@ -17,7 +17,7 @@ const Overview = ({ data }) => {
     return Object.entries(groups).map(([name, value]) => ({ name, value }));
   }, [data]);
 
-  const COLORS = ['#6366f1', '#a855f7', '#ec4899', '#f59e0b', '#10b981', '#3b82f6'];
+  const COLORS = ['#4338ca', '#7e22ce', '#be185d', '#b45309', '#047857', '#1d4ed8'];
 
   if (!orgStats) return <div className="p-8">No data available...</div>;
 
@@ -99,7 +99,7 @@ const Overview = ({ data }) => {
                <span className="text-[10px] uppercase font-bold tracking-widest">Tech Score</span>
              </div>
              <div className="text-2xl font-bold">{Math.round(orgStats.techScore)}%</div>
-             <div className={`text-[10px] uppercase font-bold mt-1 ${orgStats.techScore >= 70 ? 'text-[#10b981]' : orgStats.techScore >= 50 ? 'text-[#f59e0b]' : 'text-[#ef4444]'}`}>
+             <div className={`text-[10px] uppercase font-bold mt-1 ${orgStats.techScore >= 70 ? 'text-[#065f46]' : orgStats.techScore >= 50 ? 'text-[#92400e]' : 'text-[#991b1b]'}`}>
                 {orgStats.techScore >= 70 ? 'High maturity' : orgStats.techScore >= 50 ? 'Transition zone' : 'Fragmented'}
              </div>
            </div>
@@ -110,7 +110,7 @@ const Overview = ({ data }) => {
                <span className="text-[10px] uppercase font-bold tracking-widest">People Score</span>
              </div>
              <div className="text-2xl font-bold">{Math.round(orgStats.workforceScore)}%</div>
-             <div className={`text-[10px] uppercase font-bold mt-1 ${orgStats.workforceScore >= 70 ? 'text-[#10b981]' : orgStats.workforceScore >= 50 ? 'text-[#f59e0b]' : 'text-[#ef4444]'}`}>
+             <div className={`text-[10px] uppercase font-bold mt-1 ${orgStats.workforceScore >= 70 ? 'text-[#065f46]' : orgStats.workforceScore >= 50 ? 'text-[#92400e]' : 'text-[#991b1b]'}`}>
                 {orgStats.workforceScore >= 70 ? 'High maturity' : orgStats.workforceScore >= 50 ? 'Transition zone' : 'Fragmented'}
              </div>
            </div>
@@ -139,7 +139,7 @@ const Overview = ({ data }) => {
                   ))}
                 </Pie>
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '12px', color: '#fff' }}
+                  contentStyle={{ backgroundColor: '#fcf8f1', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '12px', color: '#020617' }}
                 />
                 <Legend verticalAlign="bottom" height={36}/>
               </PieChart>

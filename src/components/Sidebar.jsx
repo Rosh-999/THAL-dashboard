@@ -23,7 +23,7 @@ const Sidebar = ({ isOpen, onClose }) => {
               <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-1">Dashboard Pro</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-lg text-text-secondary">
+          <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-lg text-text-secondary">
             <X size={24} />
           </button>
         </div>

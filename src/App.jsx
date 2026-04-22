@@ -33,7 +33,7 @@ const App = () => {
     <Router>
       <div className="app-container">
         <header className={`global-header ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-           <h1 className="text-xl font-bold gradient-text">THAL Dashboard</h1>
+           <h1 className="text-xl font-bold text-[#fcf8f1]">THAL Dashboard</h1>
            <button onClick={toggleSidebar} className="menu-trigger">
              <Menu size={20} />
            </button>

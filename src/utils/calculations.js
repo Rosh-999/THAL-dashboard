@@ -88,8 +88,8 @@ export const getQuadrantDetails = (quadrant) => {
   switch (quadrant) {
     case 'THAL Leader':
       return {
-        color: '#10b981',
-        bg: 'rgba(16, 185, 129, 0.1)',
+        color: '#065f46', // Darker Emerald
+        bg: 'rgba(6, 95, 70, 0.15)',
         desc: 'Q1 – THAL Leader: High AI adoption, employee confidence, and balanced hybrid work. Market leadership in efficiency and innovation.',
         oneLiner: 'From being efficient to becoming industry leaders.',
         situation: 'Strong AI adoption, high employee confidence, effective leadership, and balanced hybrid work.',
@@ -105,8 +105,8 @@ export const getQuadrantDetails = (quadrant) => {
       };
     case 'People-Centric':
       return {
-        color: '#3b82f6',
-        bg: 'rgba(59, 130, 246, 0.1)',
+        color: '#1e40af', // Darker Blue
+        bg: 'rgba(30, 64, 175, 0.15)',
         desc: 'Q2 – People-Centric: Strong culture and workforce readiness, but lagging in technology modernization and AI capability.',
         oneLiner: 'You have the people—now empower them with technology.',
         situation: 'Employees are ready and engaged with strong leadership, but AI adoption is low and legacy systems dominate.',
@@ -122,8 +122,8 @@ export const getQuadrantDetails = (quadrant) => {
       };
     case 'Tech-Driven':
       return {
-        color: '#f59e0b',
-        bg: 'rgba(245, 158, 11, 0.1)',
+        color: '#92400e', // Darker Amber
+        bg: 'rgba(146, 64, 14, 0.15)',
         desc: 'Q4 – Tech-Driven: Advanced tools and systems adoption, but hindered by employee fear, low trust, and poor leadership alignment.',
         oneLiner: 'Technology alone doesn’t transform—people do.',
         situation: 'Strong AI/tools adoption and good systems, but plagued by employee fear, low trust, burnout, and misalignment.',
@@ -139,8 +139,8 @@ export const getQuadrantDetails = (quadrant) => {
       };
     case 'Fragmented':
       return {
-        color: '#ef4444',
-        bg: 'rgba(239, 68, 68, 0.1)',
+        color: '#991b1b', // Darker Red
+        bg: 'rgba(153, 27, 27, 0.15)',
         desc: 'Q3 – Fragmented: Foundational weaknesses in both AI adoption and leadership alignment. High resistance to change.',
         oneLiner: 'Fix the foundation before scaling transformation.',
         situation: 'Low AI adoption, poor leadership alignment, low employee confidence, and high resistance to change.',
@@ -156,8 +156,8 @@ export const getQuadrantDetails = (quadrant) => {
       };
     case 'Transition Zone':
       return {
-        color: '#a855f7',
-        bg: 'rgba(168, 85, 247, 0.1)',
+        color: '#6b21a8', // Darker Purple
+        bg: 'rgba(107, 33, 168, 0.15)',
         desc: 'Transition Zone: Maturity is developing but not yet fully achieved. Standardizing successful pilots is key.',
         oneLiner: 'Moving toward excellence through consistency.',
         situation: 'Mixed results with some successful pilots but inconsistent adoption across the organization.',
