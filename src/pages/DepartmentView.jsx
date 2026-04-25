@@ -57,7 +57,9 @@ const DepartmentView = ({ data }) => {
               transformOrigin: 'center',
               animation: 'popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
               color: '#020617',
-              margin: 'auto'
+              margin: 'auto 0',
+              marginTop: '1rem',
+              marginBottom: '2rem'
             }}
             onClick={e => e.stopPropagation()}
           >

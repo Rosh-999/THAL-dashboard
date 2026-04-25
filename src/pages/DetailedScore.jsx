@@ -37,13 +37,13 @@ const DetailedScore = ({ data }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
         {/* Quadrant Matrix */}
         <div className="lg:col-span-2 glass-card">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-xl font-semibold">Leadership Matrix (Organization Position)</h2>
-            <div className="flex gap-4 text-[10px] font-bold uppercase tracking-wider text-text-secondary">
-              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full" style={{ background: '#064836ff' }}></div> LEADER</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full" style={{ background: '#1e40af' }}></div> PEOPLE</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full" style={{ background: '#92400e' }}></div> TECH</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full" style={{ background: '#991b1b' }}></div> FRAG</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+            <h2 className="text-xl font-semibold">Leadership Matrix</h2>
+            <div className="flex flex-wrap gap-3 text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-text-secondary sm:justify-end">
+              <span className="flex items-center gap-1.5 whitespace-nowrap"><div className="w-2 h-2 rounded-full" style={{ background: '#064836ff' }}></div> LEADER</span>
+              <span className="flex items-center gap-1.5 whitespace-nowrap"><div className="w-2 h-2 rounded-full" style={{ background: '#1e40af' }}></div> PEOPLE</span>
+              <span className="flex items-center gap-1.5 whitespace-nowrap"><div className="w-2 h-2 rounded-full" style={{ background: '#92400e' }}></div> TECH</span>
+              <span className="flex items-center gap-1.5 whitespace-nowrap"><div className="w-2 h-2 rounded-full" style={{ background: '#991b1b' }}></div> FRAG</span>
             </div>
           </div>
 
