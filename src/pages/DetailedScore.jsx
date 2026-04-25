@@ -77,21 +77,22 @@ const DetailedScore = ({ data }) => {
             </div>
 
             <ResponsiveContainer width="100%" height="100%">
-              <ScatterChart margin={{ top: 20, right: 30, bottom: 40, left: 30 }}>
+              <ScatterChart margin={{ top: 40, right: 10, bottom: 40, left: -20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                 <XAxis
                   type="number"
                   dataKey="x"
                   domain={[0, 100]}
-                  tick={{ fontSize: 10 }}
-                  label={{ value: 'Technology Maturity (T+A)', position: 'bottom', offset: 20, fill: '#64748b', fontSize: 12 }}
+                  tick={{ fontSize: 9 }}
+                  label={{ value: 'Tech Maturity', position: 'bottom', offset: 10, fill: '#64748b', fontSize: 10 }}
                 />
                 <YAxis
                   type="number"
                   dataKey="y"
                   domain={[0, 100]}
-                  tick={{ fontSize: 10 }}
-                  label={{ value: 'Workforce Maturity (H+L)', angle: -90, position: 'insideLeft', offset: -10, fill: '#64748b', fontSize: 12 }}
+                  tick={{ fontSize: 9 }}
+                  width={40}
+                  label={{ value: 'Workforce Maturity', angle: -90, position: 'insideLeft', offset: 15, fill: '#64748b', fontSize: 10 }}
                 />
                 <ZAxis type="number" range={[400, 400]} />
                 <ReferenceLine x={70} stroke="#065f46" strokeDasharray="5 5" opacity={0.3} />
