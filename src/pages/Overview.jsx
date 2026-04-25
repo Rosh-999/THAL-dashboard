@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { Users, Briefcase, ChevronRight, TrendingUp } from 'lucide-react';
@@ -7,6 +7,8 @@ import { aggregateScores, getQuadrantDetails } from '../utils/calculations';
 const Overview = ({ data }) => {
   const navigate = useNavigate();
 
+  const [showAllDepartments, setShowAllDepartments] = useState(false);
+
   const orgStats = useMemo(() => aggregateScores(data), [data]);
   
   const departmentStats = useMemo(() => {
@@ -14,7 +16,21 @@ const Overview = ({ data }) => {
       acc[curr.department] = (acc[curr.department] || 0) + 1;
       return acc;
     }, {});
-    return Object.entries(groups).map(([name, value]) => ({ name, value }));
+    
+    const entries = Object.entries(groups).map(([name, value]) => ({ name, value }));
+    const total = data.length;
+    
+    // Group small segments (less than 3%) into "Others" to avoid congestion
+    const threshold = 0.03;
+    const mainGroups = entries.filter(e => (e.value / total) >= threshold);
+    const others = entries.filter(e => (e.value / total) < threshold);
+    
+    if (others.length > 0) {
+      const othersValue = others.reduce((sum, e) => sum + e.value, 0);
+      return [...mainGroups, { name: 'Others', value: othersValue }];
+    }
+    
+    return mainGroups;
   }, [data]);
 
   const COLORS = ['#4338ca', '#7e22ce', '#be185d', '#b45309', '#047857', '#1d4ed8'];
@@ -151,25 +167,43 @@ const Overview = ({ data }) => {
         <div className="glass-card">
            <h3 className="text-xl font-semibold mb-6">Available Department Scores</h3>
            <div className="space-y-4">
-              {Array.from(new Set(data.map(d => d.department))).map((dept, i) => {
-                const deptData = data.filter(d => d.department === dept);
-                const scores = aggregateScores(deptData);
-                const avg = Math.round((scores.techScore + scores.workforceScore) / 2);
+              {(() => {
+                const uniqueDepts = Array.from(new Set(data.map(d => d.department)));
+                const displayedDepts = showAllDepartments ? uniqueDepts : uniqueDepts.slice(0, 5);
+                
                 return (
-                  <div key={dept} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-glass-bg rounded-xl border border-glass-border gap-3">
-                    <div className="font-semibold text-sm truncate max-w-[200px]">{dept}</div>
-                    <div className="flex items-center gap-3 flex-1 sm:justify-end">
-                      <div className="flex-1 sm:flex-none sm:w-32 h-2 bg-black/5 rounded-full overflow-hidden flex">
-                        <div 
-                          className="h-full rounded-full" 
-                          style={{ width: `${avg}%`, background: getQuadrantDetails(scores.quadrant).color }}
-                        ></div>
-                      </div>
-                      <span className="font-mono font-bold w-10 text-right text-sm">{avg}%</span>
-                    </div>
-                  </div>
+                  <>
+                    {displayedDepts.map((dept, i) => {
+                      const deptData = data.filter(d => d.department === dept);
+                      const scores = aggregateScores(deptData);
+                      const avg = Math.round((scores.techScore + scores.workforceScore) / 2);
+                      return (
+                        <div key={dept} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-glass-bg rounded-xl border border-glass-border gap-3">
+                          <div className="font-semibold text-sm truncate max-w-[200px]">{dept}</div>
+                          <div className="flex items-center gap-3 flex-1 sm:justify-end">
+                            <div className="flex-1 sm:flex-none sm:w-32 h-2 bg-black/5 rounded-full overflow-hidden flex">
+                              <div 
+                                className="h-full rounded-full" 
+                                style={{ width: `${avg}%`, background: getQuadrantDetails(scores.quadrant).color }}
+                              ></div>
+                            </div>
+                            <span className="font-mono font-bold w-10 text-right text-sm">{avg}%</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                    
+                    {uniqueDepts.length > 5 && (
+                      <button
+                        onClick={() => setShowAllDepartments(!showAllDepartments)}
+                        className="w-full py-3 px-4 rounded-xl border border-dashed border-glass-border text-text-secondary text-sm font-semibold hover:bg-glass-bg transition-colors flex items-center justify-center gap-2"
+                      >
+                        {showAllDepartments ? 'Show Less' : `View More (${uniqueDepts.length - 5} more departments)`}
+                      </button>
+                    )}
+                  </>
                 );
-              })}
+              })()}
            </div>
         </div>
       </div>

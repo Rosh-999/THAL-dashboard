@@ -37,7 +37,7 @@ const DepartmentView = ({ data }) => {
             display: 'flex', 
             visibility: 'visible', 
             opacity: 1,
-            zIndex: 9999 
+            zIndex: 1001 
           }}
           onClick={() => {
             setSelectedDept(null);
@@ -54,9 +54,10 @@ const DepartmentView = ({ data }) => {
               backgroundColor: '#fcf8f1',
               border: '1px solid rgba(0,0,0,0.1)',
               position: 'relative',
-              transformOrigin: modalOrigin ? `${modalOrigin.x}px ${modalOrigin.y}px` : 'center',
+              transformOrigin: 'center',
               animation: 'popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
-              color: '#020617'
+              color: '#020617',
+              margin: 'auto'
             }}
             onClick={e => e.stopPropagation()}
           >
@@ -88,7 +89,7 @@ const DepartmentView = ({ data }) => {
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 max-h-[70vh] overflow-y-auto custom-scrollbar">
+            <div className="p-4 md:p-6 max-h-[80vh] overflow-y-auto custom-scrollbar">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-6">
                   <div className="p-4 rounded-2xl border border-black/5 shadow-sm" style={{ backgroundColor: 'rgba(59, 130, 246, 0.05)' }}>
@@ -118,17 +119,17 @@ const DepartmentView = ({ data }) => {
                     </div>
                   </div>
 
-                  <div className="p-5 rounded-2xl border border-emerald-500/10 shadow-sm" style={{ backgroundColor: 'rgba(16, 185, 129, 0.05)' }}>
-                    <h4 className="text-[10px] uppercase font-bold mb-4 flex items-center gap-2 text-emerald-700 tracking-widest">
+                  <div className="p-8 rounded-2xl border border-emerald-500/10 shadow-sm" style={{ backgroundColor: 'rgba(16, 185, 129, 0.05)' }}>
+                    <h4 className="text-[10px] uppercase font-bold mb-4 flex items-center gap-3 text-emerald-700 tracking-widest">
                       <CheckCircle size={16} /> Actionable Roadmap
                     </h4>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 pl-4">
                       {getQuadrantDetails(selectedDept.quadrant).todo.map((item, idx) => (
-                        <li key={idx} className="text-xs text-slate-700 flex gap-3">
-                          <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center text-[10px] font-bold text-emerald-600 border border-emerald-100 flex-shrink-0">
-                            {idx + 1}
-                          </div>
-                          <span className="leading-tight">{item}</span>
+                        <li key={idx} className="text-xs text-slate-700 flex items-start gap-4 mb-1">
+                          <span className="min-w-[20px] font-bold text-emerald-600 flex-shrink-0 text-left">
+                            {idx + 1}.
+                          </span>
+                          <span className="flex-1 leading-normal">{item}</span>
                         </li>
                       ))}
                     </ul>

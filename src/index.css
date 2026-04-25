@@ -281,7 +281,9 @@ body {
   pointer-events: none;
 }
 
-.global-header.sidebar-open { left: 280px; }
+@media (min-width: 768px) {
+  .global-header.sidebar-open { left: 280px; }
+}
 
 @media (min-width: 768px) {
   .global-header { height: 80px; padding: 0 2rem; }

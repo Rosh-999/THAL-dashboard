@@ -192,13 +192,13 @@ const DetailedScore = ({ data }) => {
 
             <div>
               <h4 className="text-sm font-bold text-text-primary mb-3">Key Next Steps</h4>
-              <ul className="space-y-3">
+              <ul className="space-y-3 pl-8">
                 {quadrant.todo.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-sm text-text-secondary">
-                    <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 flex-shrink-0 mt-0.5">
-                      {idx + 1}
-                    </div>
-                    <span>{item}</span>
+                    <span className="font-bold text-emerald-600 flex-shrink-0 w-5 text-right">
+                      {idx + 1}.
+                    </span>
+                    <span className="flex-1 leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
