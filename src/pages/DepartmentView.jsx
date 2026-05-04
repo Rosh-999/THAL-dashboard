@@ -84,9 +84,10 @@ const DepartmentView = ({ data }) => {
                   setSelectedDept(null);
                   setModalOrigin(null);
                 }}
-                className="p-2 hover:bg-black/5 rounded-lg text-slate-500"
+                className="text-slate-500 hover:text-slate-800 transition-colors"
+                style={{ outline: 'none', border: 'none', background: 'transparent', cursor: 'pointer' }}
               >
-                <X size={20} />
+                <X size={24} />
               </button>
             </div>
 
@@ -109,6 +110,57 @@ const DepartmentView = ({ data }) => {
                     <p className="text-sm text-slate-800 leading-relaxed font-medium">
                       {getQuadrantDetails(selectedDept.quadrant).focus}
                     </p>
+                  </div>
+                  
+                  <div className="p-4 rounded-2xl bg-white border border-black/5 shadow-sm flex flex-col items-center justify-center flex-1 w-full">
+                    <h4 className="text-[10px] uppercase font-bold text-slate-500 mb-4 tracking-widest text-center">THAL Matrix Position</h4>
+                    <div className="relative flex-shrink-0 overflow-hidden w-full" style={{ maxWidth: '240px', aspectRatio: '1 / 1', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '12px', backgroundColor: '#fcf8f1' }}>
+                      {/* Quadrants based on actual calculations.js thresholds */}
+                      {/* Fragmented (Tech < 50, Work < 50) */}
+                      <div className="absolute" style={{ bottom: 0, left: 0, width: '50%', height: '50%', backgroundColor: 'rgba(239, 68, 68, 0.08)' }}></div>
+                      
+                      {/* Tech-Driven (Tech >= 70, Work < 70) */}
+                      <div className="absolute" style={{ bottom: 0, right: 0, width: '30%', height: '70%', backgroundColor: 'rgba(245, 158, 11, 0.08)' }}></div>
+                      
+                      {/* People-Centric (Tech < 70, Work >= 70) */}
+                      <div className="absolute" style={{ top: 0, left: 0, width: '70%', height: '30%', backgroundColor: 'rgba(59, 130, 246, 0.08)' }}></div>
+                      
+                      {/* THAL Leader (Tech >= 70, Work >= 70) */}
+                      <div className="absolute" style={{ top: 0, right: 0, width: '30%', height: '30%', backgroundColor: 'rgba(16, 185, 129, 0.08)' }}></div>
+                      
+                      {/* Transition Zone (The remaining space) */}
+                      <div className="absolute" style={{ bottom: '50%', left: 0, width: '70%', height: '20%', backgroundColor: 'rgba(107, 33, 168, 0.04)' }}></div>
+                      <div className="absolute" style={{ bottom: 0, left: '50%', width: '20%', height: '50%', backgroundColor: 'rgba(107, 33, 168, 0.04)' }}></div>
+                      
+                      {/* Threshold Grid lines (at 50% and 70%) */}
+                      <div className="absolute" style={{ top: 0, bottom: 0, left: '50%', width: '1px', borderLeft: '1px dashed rgba(0,0,0,0.1)' }}></div>
+                      <div className="absolute" style={{ top: 0, bottom: 0, left: '70%', width: '1px', borderLeft: '1px dashed rgba(0,0,0,0.15)' }}></div>
+                      <div className="absolute" style={{ left: 0, right: 0, bottom: '50%', height: '1px', borderBottom: '1px dashed rgba(0,0,0,0.1)' }}></div>
+                      <div className="absolute" style={{ left: 0, right: 0, bottom: '70%', height: '1px', borderBottom: '1px dashed rgba(0,0,0,0.15)' }}></div>
+                      
+                      {/* Labels */}
+                      <span className="absolute font-bold" style={{ top: '8px', left: '8px', fontSize: '12px', color: 'rgba(29, 78, 216, 0.6)' }}>PEOPLE</span>
+                      <span className="absolute font-bold" style={{ top: '8px', right: '8px', fontSize: '12px', color: 'rgba(4, 120, 87, 0.6)' }}>LEADER</span>
+                      <span className="absolute font-bold" style={{ bottom: '8px', left: '8px', fontSize: '12px', color: 'rgba(185, 28, 28, 0.6)' }}>FRAG</span>
+                      <span className="absolute font-bold" style={{ bottom: '8px', right: '8px', fontSize: '12px', color: 'rgba(180, 83, 9, 0.6)' }}>TECH</span>
+                      <span className="absolute font-bold" style={{ bottom: '52%', left: '52%', fontSize: '10px', color: 'rgba(107, 33, 168, 0.5)' }}>TRANSITION</span>
+
+                      {/* Dot plotted purely linearly 0-100% */}
+                      <div 
+                        className="absolute rounded-full transition-all"
+                        style={{
+                          width: '16px',
+                          height: '16px',
+                          border: '2px solid white',
+                          left: `calc(${selectedDept.techScore}% - 8px)`,
+                          bottom: `calc(${selectedDept.workforceScore}% - 8px)`,
+                          backgroundColor: getQuadrantDetails(selectedDept.quadrant).color,
+                          zIndex: 10,
+                          boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.15)',
+                          transitionDuration: '700ms'
+                        }}
+                      ></div>
+                    </div>
                   </div>
                 </div>
 

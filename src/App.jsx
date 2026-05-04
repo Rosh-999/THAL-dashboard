@@ -33,10 +33,12 @@ const App = () => {
     <Router>
       <div className="app-container">
         <header className={`global-header ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-           <h1 className="text-xl font-bold text-[#fcf8f1]">THAL Dashboard</h1>
-           <button onClick={toggleSidebar} className="menu-trigger">
-             <Menu size={20} />
-           </button>
+           <div className="flex items-center gap-4">
+             <button onClick={toggleSidebar} className="menu-trigger md:hidden">
+               <Menu size={20} />
+             </button>
+             <h1 className="text-xl font-bold text-[#fcf8f1]">THAL Dashboard</h1>
+           </div>
         </header>
 
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />

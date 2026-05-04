@@ -1,10 +1,6 @@
 import React from 'react';
 import { History, TrendingUp, Users, ArrowUpRight } from 'lucide-react';
 
-const DUMMY_REPORTS = [
-  { id: '1', date: 'Jan 2026', attendees: 145, tech: 62, workforce: 58, quadrant: 'Transition Zone', growth: '+5%' },
-  { id: '2', date: 'Oct 2025', attendees: 120, tech: 48, workforce: 45, quadrant: 'Fragmented', growth: '+12%' },
-];
 
 const PreviousReports = ({ currentData }) => {
   return (
@@ -45,37 +41,15 @@ const PreviousReports = ({ currentData }) => {
             <History size={20} className="text-text-secondary" />
             Historical Archive
           </h3>
-          {DUMMY_REPORTS.map((report) => (
-            <div key={report.id} className="glass-card flex flex-col md:flex-row md:items-center justify-between group cursor-pointer hover:border-white/20 transition-all gap-4">
-               <div className="flex flex-col md:flex-row md:items-center gap-6">
-                  <div className="w-32 flex-shrink-0">
-                    <div className="text-lg font-bold">{report.date}</div>
-                    <div className="text-[10px] text-text-secondary uppercase font-bold">{report.attendees} Participated</div>
-                  </div>
-                  <div className="flex items-center gap-6 md:border-l border-glass-border md:pl-6">
-                    <div className="w-16">
-                      <div className="text-[10px] text-text-secondary uppercase">Tech</div>
-                      <div className="font-mono font-bold">{report.tech}%</div>
-                    </div>
-                    <div className="w-24">
-                      <div className="text-[10px] text-text-secondary uppercase">Workforce</div>
-                      <div className="font-mono font-bold">{report.workforce}%</div>
-                    </div>
-                    <div className="w-32">
-                      <div className="text-[10px] text-text-secondary uppercase">Quadrant</div>
-                      <div className="font-bold text-sm">{report.quadrant}</div>
-                    </div>
-                  </div>
-               </div>
-               
-               <div className="flex items-center gap-6 justify-between md:justify-end border-t md:border-t-0 border-glass-border pt-4 md:pt-0">
-                 <div className="text-emerald-500 font-bold text-sm bg-emerald-500/10 px-3 py-1 rounded-full">{report.growth}</div>
-                 <button className="w-10 h-10 rounded-full bg-glass-bg border border-glass-border flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all flex-shrink-0">
-                   <ArrowUpRight size={18} />
-                 </button>
-               </div>
+          <div className="glass-card flex flex-col items-center justify-center py-16 text-center mt-2">
+            <div className="w-16 h-16 rounded-full bg-black/5 flex items-center justify-center mb-4">
+              <History size={32} className="text-slate-400" />
             </div>
-          ))}
+            <h4 className="text-lg font-bold text-slate-700 mb-2">No Previous History Available</h4>
+            <p className="text-sm text-slate-500 max-w-md">
+              There are currently no historical archives or previous reports available for comparison. Future assessments will appear here.
+            </p>
+          </div>
         </div>
       </div>
     </div>

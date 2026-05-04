@@ -20,10 +20,10 @@ const Sidebar = ({ isOpen, onClose }) => {
             </div>
             <div>
               <h2 className="text-lg font-bold leading-none">THAL</h2>
-              <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-1">Dashboard Pro</p>
+              <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-1">Dashboard</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-black/5 rounded-lg text-text-secondary">
+          <button onClick={onClose} className="text-text-secondary hover:text-slate-800 transition-colors md:hidden" style={{ outline: 'none', border: 'none', background: 'transparent', cursor: 'pointer' }}>
             <X size={24} />
           </button>
         </div>
